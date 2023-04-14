@@ -1,0 +1,17 @@
+/* @import "tailwindcss/base"; */
+@import "highlight.js/styles/github-dark.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  pre > code {
+    @apply rounded-none text-sm;
+  }
+  :not(pre) > code {
+    @apply rounded-[4px] px-1 bg-zinc-700 font-medium;
+  }
+
+  pre {
+    @apply overflow-auto;
+  }
+}
