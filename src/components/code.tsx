@@ -4,9 +4,12 @@ import { CopyIcon } from "./icons/copy";
 
 export const Code = (props: { code: string; language: string }) => {
   const { code, language } = props;
+  const ref = React.useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    highlight.getLanguage(language) && highlight.highlightAll();
+    ref.current &&
+      highlight.getLanguage(language) &&
+      highlight.highlightElement(ref.current);
   }, [code]);
 
   return (
@@ -21,7 +24,9 @@ export const Code = (props: { code: string; language: string }) => {
         </button>
       </div>
       <pre>
-        <code className={`language-${language}`}>{code}</code>
+        <code ref={ref} className={`language-${language}`}>
+          {code}
+        </code>
       </pre>
     </div>
   );

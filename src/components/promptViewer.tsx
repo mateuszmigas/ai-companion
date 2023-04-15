@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import { useEffect, useState } from "react";
 import { getProvider } from "../api-provider";
 import { isMock } from "../utils/settings";
+import { CopyIcon } from "./icons/copy";
 
 export const PromptViewer = (props: { prompt: string }) => {
   const [completion, setCompletion] = useState(`Searching for: ${prompt}`);
@@ -20,9 +21,17 @@ export const PromptViewer = (props: { prompt: string }) => {
 
   return (
     <div className="flex flex-col gap-4 bg-skin-fill-background text-skin-base p-4 w-[457px] border border-px border-skin-secondary rounded-[8px]">
-      <span className="text-xl font-bold">
-        {isMock ? "Mock Prompt" : "AI Prompt"}
-      </span>
+      <div className="flex flex-row justify-between items-center px-1">
+        <span className="text-xl font-bold">
+          {isMock ? "Mock Prompt" : "AI Prompt"}
+        </span>
+        <button
+          className="w-6 h-6"
+          onClick={() => window.navigator.clipboard.writeText(completion)}
+        >
+          <CopyIcon></CopyIcon>
+        </button>
+      </div>
       <ReactMarkdown
         children={completion}
         components={{

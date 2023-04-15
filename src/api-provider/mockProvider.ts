@@ -1,6 +1,24 @@
 import { ApiProvider } from "./apiProvider";
 
-const mockData = `To create a CSS blinking animation, you can use the CSS \`animation\` property along with the \`@keyframes\` rule.
+const mockData = `
+To pass extra arguments to webpack command, you can use the \`--env\` flag followed by a JSON object containing the extra arguments. For example:
+
+\`\`\`bash
+webpack --env.production=true --env.API_URL=https://example.com/api
+\`\`\`
+
+In the webpack configuration file, you can access these extra arguments using \`process.env\` object. For example:
+
+\`\`\`javascript
+module.exports = env => {
+  const isProduction = env.production === true;
+  const apiUrl = env.API_URL || 'https://localhost:3000/api';
+
+  // ... rest of the configuration
+};
+\`\`\`
+`;
+const mockData2 = `To create a CSS blinking animation, you can use the CSS \`animation\` property along with the \`@keyframes\` rule.
 
 Here's an example of how to create a blinking animation:
 
@@ -11,6 +29,8 @@ Here's an example of how to create a blinking animation:
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+<dupa>
 
 /* Apply the animation to the element */
 .blink {
@@ -34,7 +54,7 @@ export class MockProvider implements ApiProvider {
     const chunkSize = 10;
 
     for (let i = 0; i < length; i += chunkSize) {
-      await sleep(100);
+      await sleep(10);
       onData(mockData.slice(i, i + chunkSize), false);
     }
     onData("", true);
