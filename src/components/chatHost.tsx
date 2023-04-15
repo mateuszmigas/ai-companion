@@ -6,7 +6,7 @@ import { mockApi } from "../api-provider/mock";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { CopyIcon } from "./icons/copy";
 
-const provider = openApi;
+const provider = mockApi;
 
 export const ChatHost = (props: { prompt: string }) => {
   const [completion, setCompletion] = useState(`Searching for: ${prompt}`);
