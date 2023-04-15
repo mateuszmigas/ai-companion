@@ -1,7 +1,7 @@
 import { ApiProvider } from "./apiProvider";
 
 type OpenAIProviderOptions = {
-  userPrePrompt: string;
+  prePrompt: string;
   model: string;
   apiKey: string;
 };
@@ -26,7 +26,7 @@ export class OpenAIProvider implements ApiProvider {
         messages: [
           {
             role: "user",
-            content: `Answer the following question: ${prompt}\n${this.options.userPrePrompt}`,
+            content: `Answer the following question: ${prompt}\n${this.options.prePrompt}`,
           },
         ],
         temperature: 0.7,

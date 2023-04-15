@@ -1,8 +1,7 @@
+import { isMock } from "../settings";
 import { ChromeStorageStateProvider } from "./chromeStorageStateProvider";
-import { LocalStorageStateProvider } from "./localStorageStateProvider";
+import { MockStorageStateProvider } from "./mockStorageStateProvider";
 
-const isDev = true;
-
-export const stateProvider = isDev
-  ? new LocalStorageStateProvider()
+export const stateProvider = isMock
+  ? new MockStorageStateProvider()
   : new ChromeStorageStateProvider();

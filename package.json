@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack serve --config webpack.dev.js",
-    "build": "webpack --watch --config webpack.prod.js"
+    "watch:mock": "webpack serve --config webpack.dev.js --env mock",
+    "watch:chrome": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",

@@ -2,8 +2,8 @@ import * as React from "react";
 import { Code } from "./code";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useState } from "react";
-import { CopyIcon } from "./icons/copy";
 import { getProvider } from "../api-provider";
+import { isMock } from "../utils/settings";
 
 export const PromptViewer = (props: { prompt: string }) => {
   const [completion, setCompletion] = useState(`Searching for: ${prompt}`);
@@ -20,7 +20,9 @@ export const PromptViewer = (props: { prompt: string }) => {
 
   return (
     <div className="flex flex-col gap-4 bg-skin-fill-background text-skin-base p-4 w-[457px] border border-px border-skin-secondary rounded-[8px]">
-      <span className="text-xl font-bold">{"AI Prompt"}</span>
+      <span className="text-xl font-bold">
+        {isMock ? "Mock Prompt" : "AI Prompt"}
+      </span>
       <ReactMarkdown
         children={completion}
         components={{

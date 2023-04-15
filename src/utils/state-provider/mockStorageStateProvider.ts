@@ -1,7 +1,7 @@
 import { ExtensionState, defaultState } from "../extensionState";
 import { StateProvider } from "./stateProvider";
 
-export class LocalStorageStateProvider implements StateProvider {
+export class MockStorageStateProvider implements StateProvider {
   private localState: ExtensionState = defaultState;
 
   getExtensionState() {

@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "AI Companion",
   "description": "AI Companion",
+  "permissions": ["storage"],
   "version": "1.0.1",
   "icons": {
     "16": "/images/searchlight16.png",
