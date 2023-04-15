@@ -8,7 +8,7 @@ import { CopyIcon } from "./icons/copy";
 
 const provider = mockApi;
 
-export const ChatHost = (props: { prompt: string }) => {
+export const PromptViewer = (props: { prompt: string }) => {
   const [completion, setCompletion] = useState(`Searching for: ${prompt}`);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const ChatHost = (props: { prompt: string }) => {
   }, []);
 
   return (
-    <div className="rounded-lg flex flex-col gap-2 border border-zinc-500 min-h-[200px] bg-zinc-800 text-white p-2">
+    <div className="flex flex-col gap-2 min-h-[200px] bg-zinc-800 text-white p-2">
       <div className="flex flex-row justify-between items-center px-1">
         <span className="text-xl font-bold">{provider.getName()}</span>
         <button

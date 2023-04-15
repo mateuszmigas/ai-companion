@@ -1,10 +1,10 @@
 import "./styles.css";
-import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { ChatHost } from "./components/chatHost";
+import { PromptViewer } from "./components/promptViewer";
+import { createElement } from "react";
 
 const findHost = () => {
-  const mockElement = document.getElementById("mock_chat-root");
+  const mockElement = document.getElementById("mock_chat_root");
   if (mockElement) {
     return mockElement;
   }
@@ -27,5 +27,5 @@ window.onload = () => {
   const host = findHost();
   const prompt = getPrompt();
   const root = createRoot(host);
-  prompt && root.render(<ChatHost prompt={prompt}></ChatHost>);
+  prompt && root.render(createElement(PromptViewer, { prompt }));
 };

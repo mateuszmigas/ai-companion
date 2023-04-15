@@ -1,6 +1,7 @@
 import "./styles.css";
-import * as React from "react";
 import { createRoot } from "react-dom/client";
+import { SettingsViewer } from "./components/settingsViewer";
+import { createElement } from "react";
 
 const findHost = () => {
   return (
@@ -9,10 +10,8 @@ const findHost = () => {
   );
 };
 
-const Popup = () => {
-  return <div className="bg-green-500">Some popup here</div>;
-};
+const x = "bg-blue-200";
 
 const host = findHost();
 const root = createRoot(host);
-root.render(<Popup></Popup>);
+root.render(createElement(SettingsViewer));

@@ -6,8 +6,8 @@ require('dotenv').config();
 
 module.exports = {
   entry: {
-    popup: path.resolve("src/popup.tsx"),
-    contentScript: path.resolve("src/contentScript.tsx"),
+    popup: path.resolve("src/popup.ts"),
+    contentScript: path.resolve("src/contentScript.ts"),
   },
   module: {
     rules: [
