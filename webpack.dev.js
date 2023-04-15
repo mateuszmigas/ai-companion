@@ -7,7 +7,7 @@ module.exports = merge(common, {
   devServer: {
     open: true,
     static: {
-      directory: path.resolve("src/static"),
+      directory: path.resolve("src/dev-static"),
     },
     port: 3001,
   }

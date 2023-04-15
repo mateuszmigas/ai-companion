@@ -6,12 +6,14 @@ module.exports = {
     extend: {
       colors: {
         skin: {
-          'fill-background': "#27272A",
+          'fill-background': "#202124",
+          'fill-code': "#17191E",
+          'secondary': "#3c4043",
         }
       },
       textColor: {
         skin: {
-          base: "white",
+          base: "#BEC1C5",
         },
       },
     },

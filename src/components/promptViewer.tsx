@@ -1,36 +1,26 @@
 import * as React from "react";
 import { Code } from "./code";
 import ReactMarkdown from "react-markdown";
-import { openApi } from "../api-provider/openai";
-import { mockApi } from "../api-provider/mock";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CopyIcon } from "./icons/copy";
-
-const provider = mockApi;
+import { getProvider } from "../api-provider";
 
 export const PromptViewer = (props: { prompt: string }) => {
   const [completion, setCompletion] = useState(`Searching for: ${prompt}`);
 
   useEffect(() => {
     setCompletion("");
-
-    provider.readCompletionStream(props.prompt, (chunk, done) => {
-      if (done) return;
-      setCompletion((accumulated) => accumulated + chunk);
+    getProvider().then((provider) => {
+      provider.readCompletionStream(props.prompt, (chunk, done) => {
+        if (done) return;
+        setCompletion((accumulated) => accumulated + chunk);
+      });
     });
   }, []);
 
   return (
-    <div className="flex flex-col gap-2 min-h-[200px] bg-zinc-800 text-white p-2">
-      <div className="flex flex-row justify-between items-center px-1">
-        <span className="text-xl font-bold">{provider.getName()}</span>
-        <button
-          className="w-6 h-6"
-          onClick={() => window.navigator.clipboard.writeText(completion)}
-        >
-          <CopyIcon></CopyIcon>
-        </button>
-      </div>
+    <div className="flex flex-col gap-4 bg-skin-fill-background text-skin-base p-4 w-[457px] border border-px border-skin-secondary rounded-[8px]">
+      <span className="text-xl font-bold">{"AI Prompt"}</span>
       <ReactMarkdown
         children={completion}
         components={{

@@ -8,7 +8,7 @@
     @apply rounded-none text-sm;
   }
   :not(pre) > code {
-    @apply rounded-[4px] px-1 bg-zinc-700 font-medium;
+    @apply rounded-[4px] px-1 bg-skin-fill-code font-medium;
   }
 
   pre {

@@ -43,5 +43,3 @@ export class MockProvider implements ApiProvider {
     return "Mock api";
   }
 }
-
-export const mockApi = new MockProvider();

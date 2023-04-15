@@ -4,16 +4,31 @@ import { PromptViewer } from "./components/promptViewer";
 import { createElement } from "react";
 
 const findHost = () => {
+  //mock host
   const mockElement = document.getElementById("mock_chat_root");
   if (mockElement) {
     return mockElement;
   }
 
-  const host = document.createElement("div");
-  host.className = "absolute right-0 top-48 w-96 mr-12";
-  host.style.zIndex = "10000";
-  window.document.body.appendChild(host);
-  return host;
+  //google 2nd column
+  const centerColElement = document.getElementById("center_col");
+  if (centerColElement) {
+    const hostElement = document.createElement("div");
+    hostElement.style.flex = "0 auto";
+    hostElement.style.width = "var(--rhs-width)";
+    hostElement.style.position = "relative";
+    hostElement.style.paddingBottom = "15px";
+    hostElement.style.transition = "opacity 0.3s";
+
+    if (centerColElement.parentElement.children.length > 1) {
+      centerColElement.parentElement.children[1].appendChild(hostElement);
+      return hostElement;
+    } else {
+      hostElement.style.marginLeft = "var(--rhs-margin)";
+      centerColElement.parentElement.appendChild(hostElement);
+      return hostElement;
+    }
+  }
 };
 
 const getPrompt = () => {

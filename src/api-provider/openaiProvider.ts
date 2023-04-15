@@ -1,5 +1,4 @@
 import { ApiProvider } from "./apiProvider";
-declare const OPENAI_API_KEY: string;
 
 type OpenAIProviderOptions = {
   userPrePrompt: string;
@@ -80,10 +79,3 @@ export class OpenAIProvider implements ApiProvider {
     return "OpenAI";
   }
 }
-
-export const openApi = new OpenAIProvider({
-  userPrePrompt:
-    "If you use any code, please wrap them with triple backtick and language name in format that matches highlight.js",
-  model: "gpt-3.5-turbo",
-  apiKey: OPENAI_API_KEY,
-});

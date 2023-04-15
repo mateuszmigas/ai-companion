@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --watch --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chrome": "^0.0.231",
     "@types/react-dom": "^18.0.11",
     "@types/react": "^18.0.35",
     "autoprefixer": "^10.4.14",
