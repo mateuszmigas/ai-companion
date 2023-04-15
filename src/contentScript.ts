@@ -41,6 +41,8 @@ const getPrompt = () => {
 window.onload = () => {
   const host = findHost();
   const prompt = getPrompt();
-  const root = createRoot(host);
-  prompt && root.render(createElement(PromptViewer, { prompt }));
+  if (host && prompt) {
+    const root = createRoot(host);
+    root.render(createElement(PromptViewer, { prompt }));
+  }
 };
