@@ -1,9 +1,6 @@
-const webpack = require("webpack");
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-require('dotenv').config();
-const isMock = process.argv.includes("mock");
 
 module.exports = {
   module: {
@@ -43,10 +40,6 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
-    }),
-    new webpack.DefinePlugin({
-      OPENAI_API_KEY: JSON.stringify(process.env.OPENAI_API_KEY),
-      IS_MOCK: JSON.stringify(isMock),
     }),
     new CopyPlugin({
       patterns: [

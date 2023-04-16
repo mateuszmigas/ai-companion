@@ -8,14 +8,13 @@ import {
 import { Select } from "./select";
 
 const models = ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"] as const;
-const apiKeyPlaceholder = "xxx";
 
 export const Settings = (props: {
   state: ExtensionState;
   setState: (state: ExtensionState) => void;
 }) => {
   const { state: extensionState, setState: setExtensionState } = props;
-  const [apiKey, setApiKey] = useState(apiKeyPlaceholder);
+  const [apiKey, setApiKey] = useState("");
   const [prePrompt, setPrePrompt] = useState(extensionState?.openai?.prePrompt);
 
   return (
@@ -74,7 +73,7 @@ export const Settings = (props: {
                   apiKey,
                 },
               });
-              setApiKey(apiKeyPlaceholder);
+              setApiKey("");
             }}
           />
         </div>

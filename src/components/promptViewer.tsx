@@ -22,7 +22,7 @@ export const PromptViewer = (props: {
     setFetchingState("fetching");
     try {
       const provider = await getProvider();
-      await provider.readCompletionStream(props.prompt, (chunk, done) => {
+      await provider.readCompletionStream(prompt, (chunk, done) => {
         if (done) {
           setFetchingState("finished");
           return;
@@ -30,7 +30,7 @@ export const PromptViewer = (props: {
         setCompletion((accumulated) => accumulated + chunk);
       });
     } catch {
-      setCompletion(`Unable to fetch completion`);
+      setCompletion("Unable to fetch completion");
     }
   }, [prompt]);
 

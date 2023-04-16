@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch:mock": "webpack serve --config webpack.mock.js --env mock",
+    "watch:mock": "webpack serve --config webpack.mock.js",
     "watch:chrome": "webpack --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js"
   },
