@@ -70,13 +70,14 @@ export const Settings = (props: {
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
             onBlur={() => {
-              setExtensionState({
-                ...extensionState,
-                openai: {
-                  ...extensionState.openai,
-                  apiKey,
-                },
-              });
+              apiKey &&
+                setExtensionState({
+                  ...extensionState,
+                  openai: {
+                    ...extensionState.openai,
+                    apiKey,
+                  },
+                });
               setApiKey("");
             }}
           />
