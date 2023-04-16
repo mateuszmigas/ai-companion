@@ -1,7 +1,7 @@
 import "./styles.css";
 import { createRoot } from "react-dom/client";
 import { createElement } from "react";
-import { PopupViewer } from "./components/popupViewer";
+import { PopupContainer } from "./components/popupContainer";
 
 const findHost = () => {
   return document.getElementById("popup_root")!;
@@ -9,4 +9,4 @@ const findHost = () => {
 
 const host = findHost();
 const root = createRoot(host);
-root.render(createElement(PopupViewer));
+root.render(createElement(PopupContainer));

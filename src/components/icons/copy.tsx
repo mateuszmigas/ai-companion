@@ -2,7 +2,7 @@ import * as React from "react";
 
 export const CopyIcon = () => (
   <svg
-    className="fill-gray-400 w-full h-full"
+    className="fill-skin-text w-full h-full hover:fill-skin-focus"
     xmlns="http://www.w3.org/2000/svg"
     height="48"
     viewBox="0 96 960 960"

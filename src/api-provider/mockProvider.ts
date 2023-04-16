@@ -59,7 +59,4 @@ export class MockProvider implements ApiProvider {
     }
     onData("", true);
   }
-  getName() {
-    return "Mock api";
-  }
 }

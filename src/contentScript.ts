@@ -1,6 +1,6 @@
 import "./styles.css";
 import { createRoot } from "react-dom/client";
-import { PromptViewer } from "./components/promptViewer";
+import { PromptContainer } from "./components/promptContainer";
 import { createElement } from "react";
 
 const findHost = () => {
@@ -42,6 +42,6 @@ window.onload = () => {
   const prompt = getPrompt();
   if (host && prompt) {
     const root = createRoot(host);
-    root.render(createElement(PromptViewer, { prompt }));
+    root.render(createElement(PromptContainer, { prompt }));
   }
 };

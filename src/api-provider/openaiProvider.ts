@@ -26,7 +26,7 @@ export class OpenAIProvider implements ApiProvider {
         messages: [
           {
             role: "user",
-            content: `Answer the following question: ${prompt}\n${this.options.prePrompt}`,
+            content: `${this.options.prePrompt}\n\nAnswer the following question: ${prompt}`,
           },
         ],
         temperature: 0.7,
@@ -73,9 +73,5 @@ export class OpenAIProvider implements ApiProvider {
         }
       }
     }
-  }
-
-  getName() {
-    return "OpenAI";
   }
 }

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useExtensionState } from "../hooks/useExtensionState";
 import { Settings } from "./settings";
 
-export const PopupViewer = () => {
+export const PopupContainer = () => {
   const [extensionState, setExtensionState] = useExtensionState();
 
   if (extensionState === null) {

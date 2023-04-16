@@ -11,6 +11,7 @@ module.exports = {
           'secondary': "#3c4043",
           'focus': "#70A3F3",
           'inactive': "#BFC1C5",
+          "text": "#BEC1C5",
         }
       },
       textColor: {

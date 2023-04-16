@@ -3,5 +3,4 @@ export interface ApiProvider {
     prompt: string,
     onData: (chunk: string, isLast: boolean) => void
   ): void;
-  getName(): string;
 }
