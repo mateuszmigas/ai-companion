@@ -8,6 +8,6 @@ export const getProvider = async () => {
     return new MockProvider();
   } else {
     const { openai } = await stateProvider.getExtensionState();
-    return new OpenAIProvider({ ...openai });
+    return new OpenAIProvider({ ...openai, model: "gpt-3.5-turbo-0301" });
   }
 };

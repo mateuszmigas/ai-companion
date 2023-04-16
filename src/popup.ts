@@ -4,10 +4,7 @@ import { SettingsViewer } from "./components/settingsViewer";
 import { createElement } from "react";
 
 const findHost = () => {
-  return (
-    document.getElementById("mock_popup_root") ??
-    document.getElementById("popup_root")!
-  );
+  return document.getElementById("popup_root")!;
 };
 
 const host = findHost();

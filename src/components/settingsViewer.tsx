@@ -1,46 +1,68 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useExtensionState } from "../hooks/useExtensionState";
+import { TriggerType, triggerTypes } from "../utils/extensionState";
+import { Select } from "./select";
+
+const models = ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"] as const;
 
 export const SettingsViewer = () => {
   const [extensionState, setExtensionState] = useExtensionState();
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey, setApiKey] = useState(extensionState?.openai?.apiKey);
 
   if (extensionState === null) {
     return null;
   }
 
   return (
-    <div className="text-skin-base bg-skin-fill-background p-4">
-      Settings
-      <div>
-        <div>
-          <label htmlFor="cars">Language Model</label>
-          <select
-            className="bg-skin-fill-background border-blue-400 border-2"
-            name="cars"
-            id="cars"
-          >
-            <option value="volvo">gpt-3.5-turbo</option>
-            <option value="saab">gpt-3.5-turbo2</option>
-          </select>
+    <div className="w-96 text-skin-base bg-skin-fill-background p-4 flex flex-col gap-4 border border-skin-secondary">
+      <span className="font-bold text-xl">Settings</span>
+      <div className="flex flex-row gap-4">
+        <div className="flex flex-col gap-1 grow overflow-auto">
+          <label htmlFor="trigger">Trigger</label>
+          <Select
+            name="trigger"
+            selectedOptionId={extensionState.trigger}
+            onChange={(id: TriggerType) => {
+              setExtensionState({
+                ...extensionState,
+                trigger: id,
+              });
+            }}
+            options={triggerTypes.map((triggerType) => ({
+              id: triggerType,
+              display: triggerType,
+            }))}
+          ></Select>
         </div>
-        <div>
-          <label htmlFor="cars">Api key</label>
+        <div className="flex flex-col gap-1 grow overflow-auto">
+          <label htmlFor="model">Model</label>
+          <Select
+            name="model"
+            selectedOptionId="1"
+            onChange={(id) => {
+              setExtensionState({
+                ...extensionState,
+                openai: {
+                  ...extensionState.openai,
+                  model: id,
+                },
+              });
+            }}
+            options={models.map((model) => ({ id: model, display: model }))}
+          ></Select>
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 grow overflow-auto">
+        <label htmlFor="apikey">Api key</label>
+        <div className="grow flex flex-row">
           <input
-            className="bg-skin-fill-background border-blue-400 border-2"
+            className={`px-1 grow bg-skin-fill-background border-skin-inactive focus:border-skin-focus outline-none border`}
             type="password"
-            id="fname"
-            name="fname"
-            value={apiKey}
+            name="apikey"
+            value={apiKey ?? "xxx"}
             onChange={(e) => setApiKey(e.target.value)}
-          />
-          <button
-            disabled={!apiKey}
-            className={`${
-              !!apiKey ? "bg-blue-400 disabled:bg-blue-200" : "bg-blue-200"
-            }`}
-            onClick={() => {
+            onBlur={() => {
               setExtensionState({
                 ...extensionState,
                 openai: {
@@ -48,13 +70,19 @@ export const SettingsViewer = () => {
                   apiKey,
                 },
               });
-              setApiKey("");
+              setApiKey("xxx");
             }}
-          >
-            Apply
-          </button>
+          />
         </div>
-        {extensionState.openai.apiKey}
+      </div>
+      <div className="flex flex-col gap-1 overflow-auto">
+        <label htmlFor="prePrompt">Pre prompt</label>
+        <textarea
+          className={`px-1 bg-skin-fill-background border-skin-inactive focus:border-skin-focus outline-none border`}
+          name="prePrompt"
+          value={extensionState.openai.prePrompt}
+          onChange={(e) => setApiKey(e.target.value)}
+        />
       </div>
     </div>
   );

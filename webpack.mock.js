@@ -4,8 +4,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   entry: {
-    popup: path.resolve("src/popup.ts"),
-    contentScript: path.resolve("src/contentScript.ts"),
+    mock: path.resolve("src/mock.tsx"),
   },
   mode: "development",
   devtool: 'cheap-module-source-map',

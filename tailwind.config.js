@@ -9,6 +9,8 @@ module.exports = {
           'fill-background': "#202124",
           'fill-code': "#17191E",
           'secondary': "#3c4043",
+          'focus': "#70A3F3",
+          'inactive': "#BFC1C5",
         }
       },
       textColor: {

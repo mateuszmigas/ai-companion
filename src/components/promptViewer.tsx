@@ -20,7 +20,7 @@ export const PromptViewer = (props: { prompt: string }) => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4 bg-skin-fill-background text-skin-base p-4 w-[457px] border border-px border-skin-secondary rounded-[8px]">
+    <div className="flex flex-col gap-4 bg-skin-fill-background text-skin-base p-4 border border-px border-skin-secondary rounded-[8px]">
       <div className="flex flex-row justify-between items-center px-1">
         <span className="text-xl font-bold">
           {isMock ? "Mock Prompt" : "AI Prompt"}

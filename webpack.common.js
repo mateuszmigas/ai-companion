@@ -6,10 +6,6 @@ require('dotenv').config();
 const isMock = process.argv.includes("mock");
 
 module.exports = {
-  entry: {
-    popup: path.resolve("src/popup.ts"),
-    contentScript: path.resolve("src/contentScript.ts"),
-  },
   module: {
     rules: [
       {
