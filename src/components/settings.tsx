@@ -7,7 +7,11 @@ import {
 } from "../utils/extensionState";
 import { Select } from "./select";
 
-const models = ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"] as const;
+const models = [
+  "text-davinci-003",
+  "gpt-3.5-turbo",
+  "gpt-3.5-turbo-0301",
+] as const;
 
 export const Settings = (props: {
   state: ExtensionState;

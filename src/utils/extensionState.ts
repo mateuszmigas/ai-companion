@@ -16,7 +16,7 @@ export const defaultState: ExtensionState = {
   trigger: "auto",
   openai: {
     apiKey: OPENAI_API_KEY ?? "",
-    model: "gpt-3.5-turbo",
+    model: "text-davinci-003",
     prePrompt: `If you use any code, please wrap them with triple backtick and language name in format that matches highlight.js`,
   },
 };
