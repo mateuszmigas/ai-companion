@@ -1,18 +1,22 @@
 import * as React from "react";
 import { useState } from "react";
-import { useExtensionState } from "../hooks/useExtensionState";
-import { TriggerType, triggerTypes } from "../utils/extensionState";
+import {
+  ExtensionState,
+  TriggerType,
+  triggerTypes,
+} from "../utils/extensionState";
 import { Select } from "./select";
 
 const models = ["gpt-3.5-turbo", "gpt-3.5-turbo-0301"] as const;
+const apiKeyPlaceholder = "xxx";
 
-export const SettingsViewer = () => {
-  const [extensionState, setExtensionState] = useExtensionState();
-  const [apiKey, setApiKey] = useState(extensionState?.openai?.apiKey);
-
-  if (extensionState === null) {
-    return null;
-  }
+export const Settings = (props: {
+  state: ExtensionState;
+  setState: (state: ExtensionState) => void;
+}) => {
+  const { state: extensionState, setState: setExtensionState } = props;
+  const [apiKey, setApiKey] = useState(apiKeyPlaceholder);
+  const [prePrompt, setPrePrompt] = useState(extensionState?.openai?.prePrompt);
 
   return (
     <div className="w-96 text-skin-base bg-skin-fill-background p-4 flex flex-col gap-4 border border-skin-secondary">
@@ -60,7 +64,7 @@ export const SettingsViewer = () => {
             className={`px-1 grow bg-skin-fill-background border-skin-inactive focus:border-skin-focus outline-none border`}
             type="password"
             name="apikey"
-            value={apiKey ?? "xxx"}
+            value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
             onBlur={() => {
               setExtensionState({
@@ -70,7 +74,7 @@ export const SettingsViewer = () => {
                   apiKey,
                 },
               });
-              setApiKey("xxx");
+              setApiKey(apiKeyPlaceholder);
             }}
           />
         </div>
@@ -80,8 +84,17 @@ export const SettingsViewer = () => {
         <textarea
           className={`px-1 bg-skin-fill-background border-skin-inactive focus:border-skin-focus outline-none border`}
           name="prePrompt"
-          value={extensionState.openai.prePrompt}
-          onChange={(e) => setApiKey(e.target.value)}
+          value={prePrompt}
+          onChange={(e) => setPrePrompt(e.target.value)}
+          onBlur={() =>
+            setExtensionState({
+              ...extensionState,
+              openai: {
+                ...extensionState.openai,
+                prePrompt,
+              },
+            })
+          }
         />
       </div>
     </div>

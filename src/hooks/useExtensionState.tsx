@@ -8,6 +8,7 @@ export const useExtensionState = () => {
   const setState = useCallback((state: ExtensionState) => {
     setInternalState(state);
     stateProvider.setExtensionState(state);
+    console.log("setting", state);
   }, []);
 
   useEffect(() => {

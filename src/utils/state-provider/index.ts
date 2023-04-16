@@ -1,4 +1,4 @@
-import { isMock } from "../settings";
+import { isMock } from "../config";
 import { ChromeStorageStateProvider } from "./chromeStorageStateProvider";
 import { MockStorageStateProvider } from "./mockStorageStateProvider";
 

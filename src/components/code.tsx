@@ -14,7 +14,7 @@ export const Code = (props: { code: string; language: string }) => {
 
   return (
     <div className="rounded-lg overflow-hidden bg-skin-fill-code">
-      <div className=" p-1 w-full flex justify-between items-center flex-row">
+      <div className="p-1 pl-2 w-full flex justify-between items-center flex-row">
         <span>{language}</span>
         <button
           className="w-6 h-6"

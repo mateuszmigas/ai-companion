@@ -1,4 +1,4 @@
-import { isMock } from "../utils/settings";
+import { isMock } from "../utils/config";
 import { stateProvider } from "../utils/state-provider";
 import { MockProvider } from "./mockProvider";
 import { OpenAIProvider } from "./openaiProvider";

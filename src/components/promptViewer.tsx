@@ -3,7 +3,7 @@ import { Code } from "./code";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useState } from "react";
 import { getProvider } from "../api-provider";
-import { isMock } from "../utils/settings";
+import { isMock } from "../utils/config";
 import { CopyIcon } from "./icons/copy";
 
 export const PromptViewer = (props: { prompt: string }) => {

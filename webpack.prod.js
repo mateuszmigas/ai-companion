@@ -1,3 +1,4 @@
+const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -7,7 +8,7 @@ module.exports = merge(common, {
     popup: path.resolve("src/popup.ts"),
     contentScript: path.resolve("src/contentScript.ts"),
   },
-  optimization: {
+  optimizatqion: {
     minimize: true,
     sideEffects: false,
     usedExports: false,
